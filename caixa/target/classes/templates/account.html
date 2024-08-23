@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>		
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Conta</title>
+    <style>
+        body {
+            background-color: #14558d;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background-color: #212429;
+        }
+
+        .navbar-brand img {
+            height: 30px;
+        }
+
+        .container {
+            margin-top: 5rem;
+        }
+
+        .account-info {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .account-info h1 {
+            font-size: 2rem;
+            color: #333333;
+            margin-bottom: 1rem;
+        }
+
+        .btn-custom {
+            background-color: #1e90ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #1c7ed6;
+        }
+
+        .btn-secondary-custom {
+            background-color: #6c757d;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem;
+        }
+
+        .btn-secondary-custom a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .btn-secondary-custom:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+
+<body>	
+	<section class="container text-center">
+	    <div class="account-info mx-auto">
+            <div>
+                <p>Bem vindo(a), <span th:text="${account.titular}"></span>!</p>
+                <p>Número da Conta: <span th:text="${account.id}"></span></p>
+                <h1>Saldo: R$ <span th:text="${account.saldo}"></span></h1>
+            </div>
+            
+            <div class="mt-4">
+                <button type="button" class="btn btn-custom btn-lg">
+                    <a class="text-decoration-none text-light" th:href="@{/deposit?accountId={accountId}(accountId=${account.id})}">Depositar</a>
+                </button>
+                <button type="button" class="btn btn-custom btn-lg">
+                    <a class="text-decoration-none text-light" th:href="@{/withdraw?accountId={accountId}(accountId=${account.id})}">Sacar</a>
+                </button>
+                <button type="button" class="btn btn-custom btn-lg">
+                    <a class="text-decoration-none text-light" th:href="@{/transfer?accountId={accountId}(accountId=${account.id})}">Transferir</a>
+                </button>
+                <button type="button" class="btn btn-custom btn-lg">
+                    <a class="text-decoration-none text-light" th:href="@{/statement?accountId={accountId}(accountId=${account.id})}">Extrato</a>
+                </button>
+                
+                <button type="button" class="btn btn-secondary-custom btn-lg">
+                    <a class="text-decoration-none text-light" href="/home">Voltar</a>
+                </button>
+            </div>
+        </div>
+    </section>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
